@@ -8,8 +8,7 @@ const userState = atom({
   default: {
     userId: '',
     userName: '',
-    email: '',
-    isAuthenticated: false,
+    token: '',
   },
   effects_UNSTABLE: [persistAtom], // 상태를 로컬 스토리지에 저장하는 효과 적용
 });
