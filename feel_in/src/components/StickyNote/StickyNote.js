@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const StickyNoteContainer = styled.div`
     width: 247px;
-    height: 56px; // 여기에서 'height'의 스펠링 오류를 수정했습니다.
     font-size: 20px;
     background-color: #FFEFA6;
     padding-left: 12px;

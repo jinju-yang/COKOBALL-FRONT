@@ -1,19 +1,8 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import { useState, useRef } from 'react';
 import Dropdown from '../components/DropDown';
 import PlusBtn from '../components/Button/PlusBtn';
 import Header from '../components/common/Header';
-
-const GlobalStyle = createGlobalStyle`
-  body{
-    background-color:#A08375;
-    padding: 0;
-    margin: 0;
-  }
-  div{
-    box-sizing: border-box;
-  }
-`;
 
 const Diary = styled.textarea`
   box-sizing: border-box;
