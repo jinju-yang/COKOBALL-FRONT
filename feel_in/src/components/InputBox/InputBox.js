@@ -8,7 +8,7 @@ const Div = styled.div`
 
 const InputBG = styled.div`
     display: flex;
-    width: 534px;
+    width: 634px;
     background-color: #FF7F44;
     justify-content: flex-end;
     border-radius: 20px;
@@ -16,8 +16,8 @@ const InputBG = styled.div`
 `;
 
 const Input = styled.input`
-    width: 500px;
-    height: 50px;
+    width: 600px;
+    height: 60px;
     border-radius: 20px;
     border: none;
     padding-left: 20px;
@@ -25,7 +25,7 @@ const Input = styled.input`
         outline: none;
     }
     font-family: 'GamjaFlower-Regular';
-    font-size: 20px;
+    font-size: 30px;
 `;
 
 function InputBox({placeholder, onChange, value, type="text"}){

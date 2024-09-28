@@ -20,13 +20,14 @@ const InputBoxDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-    margin-bottom: 50px;
+    gap: 80px;
+    margin-bottom: 100px;
 `;
 
 const Title = styled.p`
     font-size: 100px;
     user-select: none;
+    margin: 40px;
 `;
 
 function Login() {

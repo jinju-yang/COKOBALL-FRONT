@@ -20,7 +20,7 @@ const InputBoxDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 80px;
     margin-bottom: 50px;
 `;
 
@@ -32,11 +32,12 @@ const InputDiv = styled.div`
 const Title = styled.p`
     font-size: 100px;
     user-select: none;
+    margin: 40px;
 `;
 
 const ErrorSpan = styled.span`
     position: absolute;
-    font-size: 12px;
+    font-size: 20px;
     color: red;
     left: 5%;
     top: 130%;

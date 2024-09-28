@@ -1,12 +1,27 @@
 import React, { useState } from "react";
+import BookSound from '../assets/sounds/booksound.wav';
+import { Howl } from 'howler';
+
+function effectSound(src, volume = 1) {
+  let sound;
+  const soundInject = (src) => {
+    sound = new Howl({ src });
+    sound.volume(volume);
+  }
+  soundInject(src);
+  return sound;
+}
 
 const BookSpine = ({ bookname = "Test", author = "Author", color = "#A08375" }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [error, setError] = useState(null);
 
+  const es = effectSound(BookSound, 1);
+
   const handleClick = () => {
     setIsClicked(true);
     setTimeout(() => setIsClicked(false), 300);
+    es.play();
   };
 
   if (error) {
@@ -33,10 +48,10 @@ const BookSpine = ({ bookname = "Test", author = "Author", color = "#A08375" }) 
       aria-label="Book spine"
     >
       <div className="h-full flex flex-col justify-between p-4">
-        <div className="writing-mode-vertical text-white text-lg sm:text-xl md:text-2xl font-serif">
+        <div className="writing-mode-vertical text-white text-lg sm:text-xl md:text-2xl font-serif select-none">
           {bookname}
         </div>
-        <div className="text-white text-sm sm:text-base md:text-lg font-sans">
+        <div className="text-white text-sm sm:text-base md:text-lg font-sans select-none">
           {author}
         </div>
       </div>
