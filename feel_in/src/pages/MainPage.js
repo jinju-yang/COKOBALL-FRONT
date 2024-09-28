@@ -40,7 +40,7 @@ const BookShelfContainer = styled.div`
     align-items: center;
     position: absolute;
     gap: 10%;
-    top: 63%;
+    top: 65%;
     left: 50%;
     z-index: 1; /* 이미지 위에 올라오도록 설정 */
     transform: translate(-50%, -50%);

@@ -7,6 +7,8 @@ import book from '../assets/svg/book.svg';
 import libraryBackground from '../assets/svg/library.svg';
 import StickyNote from '../components/StickyNote/StickyNote';
 import Modal from '../components/StickyNote/Modal';
+import { Howl } from 'howler';
+import BookSound from '../assets/sounds/booksound.wav';
 
 const Container = styled.div`
     display: flex;
@@ -87,7 +89,17 @@ const Overlay = styled.div`
 
 const SubTitle = styled.p`
     font-size: 20px;
-`
+`;
+
+function effectSound(src, volume = 1) {
+  let sound;
+  const soundInject = (src) => {
+    sound = new Howl({ src });
+    sound.volume(volume);
+  }
+  soundInject(src);
+  return sound;
+}
 
 function BookDetailPage() {
   const dummydata = [
@@ -138,12 +150,14 @@ function BookDetailPage() {
     }
   ];
 
+  const es = effectSound(BookSound, 1);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalDate, setModalDate] = useState(null);
   const [modalContent, setModalContent] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const leftClickHandler = () => {
+    es.play();
     if (currentIndex > 0) {
       if (currentIndex % 2 === 0) {
         setCurrentIndex(currentIndex - 2);
@@ -154,6 +168,7 @@ function BookDetailPage() {
   };
 
   const rightClickHandler = () => {
+    es.play();
     if (currentIndex + 2 < dummydata.length) {
       setCurrentIndex(currentIndex + 2);
     }

@@ -23,7 +23,7 @@ const BookSpine = ({ bookname = "Test", author = "Author", color = "#A08375" }) 
   return (
     <div
       style={{ backgroundColor: color }} // Set background color dynamically
-      className={`w-16 sm:w-20 md:w-24 h-56 sm:h-72 md:h-88 rounded-r-lg shadow-lg transform transition-all duration-300 ease-in-out ${
+      className={`w-16 sm:w-20 md:w-24 h-72 sm:h-80 md:h-80 rounded-r-lg shadow-lg transform transition-all duration-300 ease-in-out ${
         isClicked ? "scale-105" : "hover:scale-105"
       }`}
       onClick={handleClick}
