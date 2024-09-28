@@ -53,11 +53,11 @@ function MainPage() {
       <BodyContainer>
         <BookShelfImage />
         <BookShelfContainer>
-          <BookSpine bookname="분노" author='류건' color="#FF5733"/>
-          <BookSpine bookname="기쁨" author='류건' color="#F2D600"/>
-          <BookSpine bookname="슬픔" author='류건' color="#4F67FF"/>
-          <BookSpine bookname="두려움" author='류건' color="#A73BFF"/>
-          <BookSpine bookname="무기력함" author='류건' color="#A9A9A9"/>
+          <BookSpine bookname="분노" author='류건' color="#FF5733" id={3}/>
+          <BookSpine bookname="기쁨" author='류건' color="#F2D600" id={1}/>
+          <BookSpine bookname="슬픔" author='류건' color="#4F67FF" id={2}/>
+          <BookSpine bookname="두려움" author='류건' color="#A73BFF" id={5}/>
+          <BookSpine bookname="무기력함" author='류건' color="#A9A9A9" id={4}/>
         </BookShelfContainer>
       </BodyContainer>
     </Container>

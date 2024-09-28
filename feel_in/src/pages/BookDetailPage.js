@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LeftArrowButton from '../components/Arrow/LeftArrowButton';
 import RightArrowButton from '../components/Arrow/RightArrowButton';
@@ -9,6 +9,8 @@ import StickyNote from '../components/StickyNote/StickyNote';
 import Modal from '../components/StickyNote/Modal';
 import { Howl } from 'howler';
 import BookSound from '../assets/sounds/booksound.wav';
+import {diariesGet} from '../api/Get';
+import {useParams} from "react-router-dom";
 
 const Container = styled.div`
     display: flex;
@@ -150,11 +152,13 @@ function BookDetailPage() {
     }
   ];
 
+  const params = useParams()
   const es = effectSound(BookSound, 1);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalDate, setModalDate] = useState(null);
   const [modalContent, setModalContent] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [diaries, setDiaries] = useState();
 
   const leftClickHandler = () => {
     es.play();
@@ -185,6 +189,12 @@ function BookDetailPage() {
     setModalOpen(false);
     setModalContent('');
   };
+
+  useEffect(() => {
+    const id = params.id;
+    const data = diariesGet(id);
+    setDiaries(data);
+  }, []);
 
   return (
     <Container>

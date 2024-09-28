@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BookSound from '../assets/sounds/booksound.wav';
 import { Howl } from 'howler';
+import { useNavigate } from 'react-router-dom';
 
 function effectSound(src, volume = 1) {
   let sound;
@@ -12,16 +13,17 @@ function effectSound(src, volume = 1) {
   return sound;
 }
 
-const BookSpine = ({ bookname = "Test", author = "Author", color = "#A08375" }) => {
+const BookSpine = ({ bookname = "Test", author = "Author", color = "#A08375", id }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [error, setError] = useState(null);
 
   const es = effectSound(BookSound, 1);
-
+  const navigate = useNavigate();
   const handleClick = () => {
     setIsClicked(true);
     setTimeout(() => setIsClicked(false), 300);
     es.play();
+    navigate(`/main/book/${id}`)
   };
 
   if (error) {
@@ -38,7 +40,7 @@ const BookSpine = ({ bookname = "Test", author = "Author", color = "#A08375" }) 
   return (
     <div
       style={{ backgroundColor: color }} // Set background color dynamically
-      className={`w-16 sm:w-20 md:w-24 h-72 sm:h-80 md:h-80 rounded-r-lg shadow-lg transform transition-all duration-300 ease-in-out ${
+      className={`w-16 sm:w-20 md:w-24 h-72 sm:h-80 md:h-80 rounded-r-lg shadow-lg transform transition-all duration-300 ease-in-out border-solid border border-black shadow-lg shadow-black/50 ${
         isClicked ? "scale-105" : "hover:scale-105"
       }`}
       onClick={handleClick}
