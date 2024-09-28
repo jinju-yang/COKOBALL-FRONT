@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
-import MainPage from './pages/MainPage';
+// import MainPage from './pages/MainPage';
+import OnBoardingPage from './pages/OnBoardingPage';
+import styled from 'styled-components';
 
 function App() {
   return (
@@ -8,7 +10,7 @@ function App() {
       <BrowserRouter>
         <RecoilRoot>
           <Routes>
-            <Route path="/" element={<MainPage />} />
+            <Route path="/" element={<OnBoardingPage />} />
           </Routes>
         </RecoilRoot>
       </BrowserRouter>
