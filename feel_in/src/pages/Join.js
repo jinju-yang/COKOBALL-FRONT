@@ -119,19 +119,20 @@ function Join() {
 
     const onClickBtn = () => {
         if(isNickname && isPassword && isPassword2){
-            const data = joinPost(nickname, password, password2);
-            if(data.status === "success"){
-                toast.success('회원가입에 성공하였습니다.');
-                setUserState(
-                    {
-                        userName: nickname,
-                        token: data.token,
-                    }
-                );
-                navigate('/whoami');
-            }else{
-                toast.error("회원가입에 실패하였습니다.")
-            }
+            joinPost(nickname, password, password2).then((data) => {
+                if(data.status === "success"){
+                    toast.success('회원가입에 성공하였습니다.');
+                    setUserState(
+                        {
+                            userName: nickname,
+                            token: data.token,
+                        }
+                    );
+                    navigate('/whoami');
+                }else{
+                    toast.error("회원가입에 실패하였습니다.")
+                }
+            });
         }
         else{
             toast.error("입력 조건을 다시 확인해주세요.");

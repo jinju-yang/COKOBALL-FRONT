@@ -4,6 +4,10 @@ import Dropdown from '../components/DropDown';
 import PlusBtn from '../components/Button/PlusBtn';
 import Header from '../components/common/Header';
 import PressBtn from '../components/Button/PressBtn';
+import { useRecoilState } from 'recoil';
+import userState from '../recoil/userState'
+import { WD } from '../api/Diary';
+import { useNavigate } from 'react-router-dom';
 
 const Diary = styled.textarea`
   box-sizing: border-box;
@@ -107,6 +111,7 @@ const Ul = styled.ul`
 `;
 
 function WriteDiary() {
+  const [user, setUser] = useRecoilState(userState);
   const [view, setView] = useState(false);
   const [selectedEmotion, setSelectedEmotion] =
     useState('오늘 어떤 감정을 느꼈나요?');
@@ -116,6 +121,7 @@ function WriteDiary() {
   const [isInputVisible, setIsInputVisible] = useState(false); // 입력 필드가 보이는지 여부
   const [newAction, setNewAction] = useState(''); // 새로운 행동의 입력값을 관리
   const nextId = useRef(2); // 새로운 요소의 id를 관리하는 ref
+  const navigate = useNavigate();
 
   // 드롭다운에서 감정을 선택했을 때
   const handleEmotionSelect = (emotionId) => {
@@ -155,7 +161,13 @@ function WriteDiary() {
       diary: diaryText,
       selectedAction: selectedAction ? selectedAction.action : null,
     };
-    console.log(data);
+    try{
+      const date = WD(diaryText, selectedActionId, user.token);
+      navigate('/main');
+    } catch(error){
+      console.log(error);
+    }
+    
     // 여기서 data를 서버로 전송하거나 다른 저장 로직을 추가할 수 있음
   };
 

@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import libraryBackground from '../assets/svg/library.svg';
 import BookSpine from '../components/BookSpine';
 import bookShelfImage from '../assets/svg/bookshelf.png';
+import WriteBtn from '../components/Button/WriteBtn';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 
 const Container = styled.div`
     display: flex;
@@ -46,7 +49,20 @@ const BookShelfContainer = styled.div`
     transform: translate(-50%, -50%);
 `;
 
+const WriteBtnDiv = styled.div`
+  position: absolute;
+  right: 106px;
+  bottom: 72px;
+  transform: translate(-50%, -50%);
+`;
+
 function MainPage() {
+  const navigate = useNavigate();
+  // const [user, setUser] = useRecoilState(use)
+  const onClickWriteBtn = () => {
+    navigate('/write')
+  }
+
   return (
     <Container>
       <Header username={'류건'} pageNum={19} />
@@ -59,6 +75,9 @@ function MainPage() {
           <BookSpine bookname="두려움" author='류건' color="#A73BFF" id={5}/>
           <BookSpine bookname="무기력함" author='류건' color="#A9A9A9" id={4}/>
         </BookShelfContainer>
+        <WriteBtnDiv>
+          <WriteBtn onClick={onClickWriteBtn}/>
+        </WriteBtnDiv>
       </BodyContainer>
     </Container>
   );
