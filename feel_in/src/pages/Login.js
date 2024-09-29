@@ -39,19 +39,16 @@ function Login() {
 
     const onClickBtn = () => {
         const data = loginPost(nickname, password);
-        data.then(appData => {
-            if (appData.status === "success") {
-                setUserState({
-                   userName: nickname,
-                   token: appData.token
-                });
-                navigate('/main');
-            } else {
-                toast.error('로그인에 실패했습니다. 다시 시도해주세요.');
-            } 
-        }).catch((error) => {
-            console.log(error);
-        });
+        if (data.status === "success") {
+            setUserState({
+               userId: data.userid,
+               userName: nickname,
+               token: data.token 
+            });
+            navigate('/main', { replace: true });
+        } else {
+            toast.error('로그인에 실패했습니다. 다시 시도해주세요.');
+        }
     }
 
     return (
