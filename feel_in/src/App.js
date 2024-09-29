@@ -21,7 +21,7 @@ function App() {
             <Route path="/join" element={<Join />} />
             <Route path="/login" element={<Login />} />
             <Route path="/whoami" element={<WhoAmI />} />
-            <Route path="/main/book" element={<BookDetailPage />} />
+            <Route path="/main/book/:id" element={<BookDetailPage />} />
           </Routes>
         </RecoilRoot>
       </BrowserRouter>

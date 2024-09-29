@@ -45,7 +45,7 @@ function Login() {
                userName: nickname,
                token: data.token 
             });
-            navigate('/main/book');
+            navigate('/main', { replace: true });
         } else {
             toast.error('로그인에 실패했습니다. 다시 시도해주세요.');
         }
