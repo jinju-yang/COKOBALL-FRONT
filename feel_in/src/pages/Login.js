@@ -43,12 +43,14 @@ function Login() {
             if (appData.status === "success") {
                 setUserState({
                    userName: nickname,
-                   token: appData.token 
+                   token: appData.token
                 });
                 navigate('/main');
             } else {
                 toast.error('로그인에 실패했습니다. 다시 시도해주세요.');
             } 
+        }).catch((error) => {
+            console.log(error);
         });
     }
 

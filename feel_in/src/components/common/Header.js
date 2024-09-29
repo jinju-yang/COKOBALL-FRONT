@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom'; // React Router 사용 시
 import profileImage from '../../assets/svg/profileImage.svg';
 import BackButton from '../Arrow/BackButton';
+import { useRecoilValue } from 'recoil';
+import userState from '../../recoil/userState';
 
 // 컨테이너 스타일
 const Container = styled.div`
@@ -63,6 +65,7 @@ function Header({ username, pageNum }) {
   const level = Math.floor(pageNum / 10);
   const expPercentage = (pageNum % 10) * 10; // 0 ~ 9 값을 10 ~ 90%로 변환
   const navigate = useNavigate(); // React Router의 useNavigate 훅
+  const user = useRecoilValue(userState);
 
   // 뒤로가기 함수
   const goBack = () => {
@@ -74,7 +77,7 @@ function Header({ username, pageNum }) {
       <BackButton onClick={goBack} />
       <UserInfo>
         <ProfileIcon />
-        <LevelInfo>{username}님 Lv.{level}</LevelInfo>
+        <LevelInfo>{user.userName}님 Lv.{level}</LevelInfo>
         <LevelBar>
           <LevelProgress exp={expPercentage} /> {/* exp 값에 따라 게이지 바 채워짐 */}
         </LevelBar>
