@@ -4,6 +4,9 @@ import Dropdown from '../components/DropDown';
 import PlusBtn from '../components/Button/PlusBtn';
 import Header from '../components/common/Header';
 import PressBtn from '../components/Button/PressBtn';
+import { useRecoilState } from 'recoil';
+import userState from '../recoil/userState'
+import { WD } from '../api/Diary';
 
 const Diary = styled.textarea`
   box-sizing: border-box;
@@ -107,6 +110,7 @@ const Ul = styled.ul`
 `;
 
 function WriteDiary() {
+  const [user, setUser] = useRecoilState(userState);
   const [view, setView] = useState(false);
   const [selectedEmotion, setSelectedEmotion] =
     useState('오늘 어떤 감정을 느꼈나요?');
@@ -155,7 +159,8 @@ function WriteDiary() {
       diary: diaryText,
       selectedAction: selectedAction ? selectedAction.action : null,
     };
-    console.log(data);
+    console.log(selectedActionId);
+    WD(diaryText, selectedActionId, user.token )
     // 여기서 data를 서버로 전송하거나 다른 저장 로직을 추가할 수 있음
   };
 

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import WhoAmIInputBox from '../components/InputBox/WhoAmIInputBox';
 import PressBtn from '../components/Button/PressBtn';
-import { useEffect, useState } from "react";
-import { solutionPost } from "../api/Post";
+import { useState } from "react";
+import { solutionPost } from "../api/Solution";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import userState from '../recoil/userState';
 
 const Div = styled.div`
     display: flex;
@@ -35,17 +37,24 @@ function WhoAmI(){
     const [isError, setIsError] = useState(true);
     const navigate = useNavigate();
 
+    const [user, setUser] = useRecoilState(userState);
+    const joy = 1;
+    const sad = 2;
+    const angry = 3;
+    const accident = 4;
+    const scary = 5;
+
     const onClickBtn = () => {
         try{
+            const list = [];
+            console.log(answers);
             Object.values(answers).forEach((value, key) => {
-                const data = solutionPost(key+1, value.content);
-                if(data.status === "error"){
-                    setIsError(false);
-                }
+                value.map((v, k) => {
+                    list.push({emotionId:key+1,solutionContent:v.content});
+                })
             });
-            if(isError){
-                navigate('/login');
-            }
+            const data = solutionPost(list);
+            navigate('/login');
         } catch(error){
             console.log(error);
         }

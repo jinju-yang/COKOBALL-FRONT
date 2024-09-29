@@ -15,12 +15,13 @@ export const loginPost = async(username, password) => {
 }
 
 export const joinPost = async(username, password, password2) => {
+    console.log(BASE_URL);  
     try{
         const response = await axios.post(`${BASE_URL}/api/auth/signup`,
             {
                 username: username,
                 password: password,
-                password2: password2
+                passwordConfirm: password2
             }
         );
         return response.data;
