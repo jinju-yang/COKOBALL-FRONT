@@ -20,9 +20,11 @@ export const getEmotion = async(emotionId, token) => {
 
 
 export const WD = async(content, solutionId, token) => {
+    const create = format(new Date(), 'yyyy-MM-dd');
     try{
         const response = await axios.post(`${BASE_URL}/api/diaries`,
             {
+                createdAt: create,
                 content: content,
                 solutionId: solutionId,
             },
